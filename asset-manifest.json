@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/T-LawGPT-frontend/static/css/main.71ed1fc5.css",
+    "main.js": "/T-LawGPT-frontend/static/js/main.c4d7d69f.js",
+    "index.html": "/T-LawGPT-frontend/index.html",
+    "main.71ed1fc5.css.map": "/T-LawGPT-frontend/static/css/main.71ed1fc5.css.map",
+    "main.c4d7d69f.js.map": "/T-LawGPT-frontend/static/js/main.c4d7d69f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.71ed1fc5.css",
+    "static/js/main.c4d7d69f.js"
+  ]
+}
