@@ -1,6 +1,6 @@
 // src/components/Hero.js
 import React from 'react';
-import { FaStar, FaSearch } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 import Dropdown from './Dropdown';
 
 const Hero = ({ searchQuery, setSearchQuery, handleSearch, handleFilter }) => {
