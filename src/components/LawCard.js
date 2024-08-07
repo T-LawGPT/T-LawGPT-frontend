@@ -6,8 +6,8 @@ const LawCard = ({ law }) => {
     <div className="flex gap-4 bg-blue-100 shadow-lg rounded-lg p-4 mb-4 transition transform hover:shadow-xl w-full">
       <div className="flex-1">
         <h2 className="text-lg font-bold text-gray-800 mb-1">{law.title}</h2>
-        <p className="text-gray-600 mb-1">{law.date}</p>
-        <p className="text-gray-600 mb-1">{law.begin_year} - {law.end_year} ({law.begin_year_be} - {law.end_year_be} BE)</p>
+        <p className="text-gray-600 mb-1">วันออกกฏหมาย: {law.date}</p>
+        <p className="text-gray-600 mb-1">{law.exciting_law ? "กฎหมายที่บังคับใช้อยู่" : "กฎหมายที่ไม่ได้บังคับใช้แล้ว"}</p>
         <p className="text-gray-600 mb-1">{law.hierarchy_of_law}</p>
       </div>
 
