@@ -55,6 +55,7 @@ const Laws = () => {
 
   const handleFilter = (criteria) => {
     setFilter(criteria === "ภาพรวม" ? '' : criteria);
+    setSearchQuery(criteria === "ภาพรวม" ? '' : searchQuery)
     applyFilterAndSearch(criteria === "ภาพรวม" ? '' : criteria, searchQuery);
   };
 
