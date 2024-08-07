@@ -34,7 +34,7 @@ const Hero = ({ searchQuery, setSearchQuery, handleSearch, handleFilter }) => {
       <div className="text-gray-700 flex flex-col items-center">
         <div className="flex space-x-8 mb-4">
           <button onClick={() => handleFilter('ภาพรวม')}>ทั้งหมด</button>
-          <button onClick={() => handleFilter('รายงานการประชุม')}>วิชาการ</button>
+          <button onClick={() => handleFilter('วิชาการ')}>วิชาการ</button>
         </div>
         <div className="flex space-x-8">
           <Dropdown label="กฎหมายแม่บท" items={['รัฐธรรมนูญ', 'พระราชบัญญัติประกอบรัฐธรรมนูญ', 'พระราชบัญญัติ', 'ประมวลกฎหมาย', 'พระราชกำหนด']} handleFilter={handleFilter} />
