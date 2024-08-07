@@ -1,5 +1,4 @@
-// src/pages/Laws.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LawCard from '../components/LawCard';
 import DecisionCard from '../components/DecisionCard';
 import Hero from '../components/Hero';
@@ -10,65 +9,67 @@ import { FaSpinner } from 'react-icons/fa';
 const Laws = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredLaws, setFilteredLaws] = useState(laws);
-  const [filter, setFilter] = useState('')
-  const [search, setSearch] = useState('')
+  const [filter, setFilter] = useState('');
   const [filteredDecisions, setFilteredDecisions] = useState(decisions);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState('');
 
-  const handleSearch = () => {
+  const applyFilterAndSearch = (criteria, query) => {
     setLoading(true);
     setTimeout(() => {
-      const results = laws.filter(law =>
-        law.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        law.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        law.hierarchy_of_law.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        law.regional.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        law.reference.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        law.summary.includes(searchQuery.toLowerCase())
-      );
-      const decisionResults = decisions.filter(decision =>
-        decision.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        decision.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        decision.date.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      setFilteredLaws(results);
+      let results = laws;
+      let decisionResults = decisions;
+
+      if (criteria) {
+        results = results.filter(law => law.hierarchy_of_law === criteria);
+        decisionResults = decisionResults.filter(decision => decision.type === criteria);
+      }
+
+      if (query) {
+        results = results.filter(law =>
+          law.title.toLowerCase().includes(query.toLowerCase()) ||
+          law.date.toLowerCase().includes(query.toLowerCase()) ||
+          law.hierarchy_of_law.toLowerCase().includes(query.toLowerCase()) ||
+          law.regional.toLowerCase().includes(query.toLowerCase()) ||
+          law.reference.toLowerCase().includes(query.toLowerCase()) ||
+          law.summary.includes(query.toLowerCase())
+        );
+        decisionResults = decisionResults.filter(decision =>
+          decision.title.toLowerCase().includes(query.toLowerCase()) ||
+          decision.summary.toLowerCase().includes(query.toLowerCase()) ||
+          decision.date.toLowerCase().includes(query.toLowerCase())
+        );
+      }
       setSearch(searchQuery)
-      setSearchQuery('')
+      setFilter(criteria)
+      setFilteredLaws(results);
       setFilteredDecisions(decisionResults);
       setLoading(false);
-    }, 1000);
-    // Simulate a delay for loading
+    }, 1000); // Simulate a delay for loading
+  };
+
+  const handleSearch = () => {
+    applyFilterAndSearch(filter, searchQuery);
   };
 
   const handleFilter = (criteria) => {
-    let results = []
-    let decisionResults = []
-    setLoading(true);
-    setTimeout(() => {
-      if (criteria === "ภาพรวม") {
-        setSearch('')
-        setFilter('')
-        results = laws
-        decisionResults = decisions
-      }
-      else {
-        setFilter(criteria)
-        results = laws.filter(law => law.hierarchy_of_law === criteria);
-        decisionResults = decisions.filter(decision => decision.type === criteria);
-      }
-
-      setFilteredLaws(results);
-      setFilteredDecisions(decisionResults);
-      setLoading(false);
-    }, 1000);
+    setFilter(criteria === "ภาพรวม" ? '' : criteria);
+    applyFilterAndSearch(criteria === "ภาพรวม" ? '' : criteria, searchQuery);
   };
+
+  useEffect(() => {
+    if (!searchQuery) {
+      applyFilterAndSearch(filter, searchQuery);
+    }
+  }, [searchQuery]);
 
   return (
     <div>
       <Hero searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleSearch={handleSearch} handleFilter={handleFilter} />
       <div className="p-6 bg-gray-100 min-h-screen">
-        <p className="mb-6">ค้นหา: {search} {filter}</p>
+
         <div className="container mx-auto">
+          <p className="mb-6">ค้นหา: {search} {filter}</p>
           {loading ? (
             <div className="flex justify-center items-center h-64">
               <FaSpinner className="text-4xl text-blue-500 animate-spin" />
