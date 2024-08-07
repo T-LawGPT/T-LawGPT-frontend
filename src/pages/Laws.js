@@ -61,6 +61,7 @@ const Laws = () => {
     if (!searchQuery) {
       applyFilterAndSearch(filter, searchQuery);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
   return (
@@ -83,12 +84,14 @@ const Laws = () => {
                 </div>
                 <div className="flex-.5 font-bold text-gray-800">อ้างอิง</div>
               </div>
-              {filteredLaws.map((law, index) => (
+              {!filteredLaws && !filteredDecisions ? <>Sorry no code</> : <>{filteredLaws.map((law, index) => (
                 <LawCard key={index} law={law} />
               ))}
-              {filteredDecisions.map((decision, index) => (
-                <DecisionCard key={index} decision={decision} />
-              ))}
+                {filteredDecisions.map((decision, index) => (
+                  <DecisionCard key={index} decision={decision} />
+                ))}
+              </>}
+
             </div>
           )}
         </div>
