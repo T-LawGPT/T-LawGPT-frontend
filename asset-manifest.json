@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/T-LawGPT-frontend/static/css/main.ebf06df7.css",
-    "main.js": "/T-LawGPT-frontend/static/js/main.5da21d50.js",
+    "main.js": "/T-LawGPT-frontend/static/js/main.ffde7014.js",
     "index.html": "/T-LawGPT-frontend/index.html",
     "main.ebf06df7.css.map": "/T-LawGPT-frontend/static/css/main.ebf06df7.css.map",
-    "main.5da21d50.js.map": "/T-LawGPT-frontend/static/js/main.5da21d50.js.map"
+    "main.ffde7014.js.map": "/T-LawGPT-frontend/static/js/main.ffde7014.js.map"
   },
   "entrypoints": [
     "static/css/main.ebf06df7.css",
-    "static/js/main.5da21d50.js"
+    "static/js/main.ffde7014.js"
   ]
 }
