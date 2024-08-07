@@ -41,6 +41,7 @@ const Laws = () => {
         );
       }
       setSearch(searchQuery)
+      setSearchQuery('')
       setFilter(criteria)
       setFilteredLaws(results);
       setFilteredDecisions(decisionResults);
@@ -61,7 +62,7 @@ const Laws = () => {
     if (!searchQuery) {
       applyFilterAndSearch(filter, searchQuery);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
   return (
