@@ -18,7 +18,7 @@ const LawCard = ({ law }) => {
         {law.reference_url && (
           <p className="text-gray-600 mb-1">
             <a href={law.reference_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline ml-1">
-             URL
+             อ้างอิง
             </a>
           </p>
         )}

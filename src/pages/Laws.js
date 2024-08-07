@@ -23,7 +23,8 @@ const Laws = () => {
         law.date.toLowerCase().includes(searchQuery.toLowerCase()) ||
         law.hierarchy_of_law.toLowerCase().includes(searchQuery.toLowerCase()) ||
         law.regional.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        law.reference.toLowerCase().includes(searchQuery.toLowerCase())
+        law.reference.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        law.summary.includes(searchQuery.toLowerCase())
       );
       const decisionResults = decisions.filter(decision =>
         decision.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -66,7 +67,7 @@ const Laws = () => {
     <div>
       <Hero searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleSearch={handleSearch} handleFilter={handleFilter} />
       <div className="p-6 bg-gray-100 min-h-screen">
-        <p className="mb-6">Search: {search} {filter}</p>
+        <p className="mb-6">ค้นหา: {search} {filter}</p>
         <div className="container mx-auto">
           {loading ? (
             <div className="flex justify-center items-center h-64">
@@ -75,9 +76,11 @@ const Laws = () => {
           ) : (
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
               <div className="flex bg-gray-200 p-4 mb-2">
-                <div className="flex-1 font-bold text-gray-800">Title</div>
-                <div className="flex-1 font-bold text-gray-800">Summary</div>
-                <div className="flex-.5 font-bold text-gray-800">URL</div>
+                <div className="flex-1 font-bold text-gray-800">หัวข้อกฏหมาย</div>
+                <div className="flex-1 font-bold text-gray-800">
+                  สรุป <span className="text-xs text-gray-500">(ไม่สามารถอ้างอิงทางกฏหมายได้)</span>
+                </div>
+                <div className="flex-.5 font-bold text-gray-800">อ้างอิง</div>
               </div>
               {filteredLaws.map((law, index) => (
                 <LawCard key={index} law={law} />
