@@ -13,7 +13,7 @@ const Navbar = () => {
           <span className="text-gray-700 text-xl">รายการโปรด</span>
         </div>
         <div className="absolute left-1/2 transform -translate-x-1/2">
-          <img src="./Logo.png" alt="Logo" />
+          <img src="./Logo.png" alt="Logo" width={'40px'} height={'40px'}/>
         </div>
         <div className="flex items-center">
           <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg mr-2 hover:bg-yellow-600">
