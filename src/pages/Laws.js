@@ -19,7 +19,6 @@ const Laws = () => {
     setTimeout(() => {
       let results = laws;
       let decisionResults = decisions;
-
       if (criteria) {
         results = results.filter(law => law.hierarchy_of_law === criteria);
         decisionResults = decisionResults.filter(decision => decision.type === criteria);
@@ -41,7 +40,8 @@ const Laws = () => {
         );
       }
       setSearch(searchQuery)
-      setSearchQuery('')
+
+      // setSearchQuery('')
       setFilter(criteria)
       setFilteredLaws(results);
       setFilteredDecisions(decisionResults);
